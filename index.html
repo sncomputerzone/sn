@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SN INTERNET ZONE</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at top left, #ffffff 0%, #dbeafe 25%, transparent 45%),
+                linear-gradient(135deg, #eef7ff, #ffffff, #dff4ff);
+            overflow-x: hidden;
+        }
+
+        /* Main Page */
+        .page {
+            min-height: 100vh;
+            padding: 18px;
+        }
+
+        /* Header */
+        .header {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 18px;
+            border-radius: 25px;
+
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            border: 1px solid rgba(255, 255, 255, 0.9);
+
+            box-shadow:
+                0 8px 30px rgba(0, 100, 200, 0.15),
+                inset 0 1px 0 white;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.8),
+                transparent
+            );
+
+            transform: skewX(-20deg);
+            animation: shine 4s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+
+            50% {
+                left: 140%;
+            }
+
+            100% {
+                left: 140%;
+            }
+        }
+
+        /* Logo */
+        .logo {
+            width: 62px;
+            height: 62px;
+            min-width: 62px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+
+            background:
+                linear-gradient(145deg, #0d47a1, #2196f3, #00bcd4);
+
+            border: 4px solid white;
+
+            box-shadow:
+                0 0 15px rgba(33,150,243,0.7),
+                inset 3px 3px 8px rgba(255,255,255,0.7),
+                inset -3px -3px 8px rgba(0,0,0,0.2);
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .brand {
+            position: relative;
+            z-index: 2;
+        }
+
+        .brand h1 {
+            font-size: clamp(20px, 5vw, 34px);
+            letter-spacing: 2px;
+            color: #073b8c;
+
+            text-shadow:
+                0 1px 0 white,
+                0 0 12px rgba(33,150,243,0.35);
+        }
+
+        .brand p {
+            margin-top: 4px;
+            color: #555;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        /* Slider */
+        .slider-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 300px;
+
+            margin: 25px auto 0;
+
+            position: relative;
+            overflow: hidden;
+
+            border-radius: 28px;
+
+            background: linear-gradient(
+                135deg,
+                #0d47a1,
+                #2196f3,
+                #00bcd4
+            );
+
+            box-shadow:
+                0 15px 40px rgba(0, 90, 180, 0.25),
+                inset 0 1px 2px rgba(255,255,255,0.8);
+
+            border: 3px solid rgba(255,255,255,0.8);
+        }
+
+        .slider {
+            width: 500%;
+            height: 100%;
+
+            display: flex;
+
+            animation: slide 20s infinite;
+        }
+
+        .slide {
+            width: 20%;
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+
+            color: white;
+            text-align: center;
+
+            overflow: hidden;
+        }
+
+        .slide::before {
+            content: "";
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.12);
+
+            top: -80px;
+            right: -50px;
+        }
+
+        .slide::after {
+            content: "";
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.08);
+
+            bottom: -70px;
+            left: -40px;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .slide-content h2 {
+            font-size: clamp(28px, 6vw, 48px);
+            margin-bottom: 10px;
+
+            text-shadow:
+                0 3px 8px rgba(0,0,0,0.25);
+        }
+
+        .slide-content p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        .slide:nth-child(1) {
+            background: linear-gradient(135deg, #0d47a1, #1976d2);
+        }
+
+        .slide:nth-child(2) {
+            background: linear-gradient(135deg, #00695c, #00a896);
+        }
+
+        .slide:nth-child(3) {
+            background: linear-gradient(135deg, #6a1b9a, #ab47bc);
+        }
+
+        .slide:nth-child(4) {
+            background: linear-gradient(135deg, #ef6c00, #ff9800);
+        }
+
+        .slide:nth-child(5) {
+            background: linear-gradient(135deg, #c62828, #ef5350);
+        }
+
+        @keyframes slide {
+
+            0%, 15% {
+                transform: translateX(0);
+            }
+
+            20%, 35% {
+                transform: translateX(-20%);
+            }
+
+            40%, 55% {
+                transform: translateX(-40%);
+            }
+
+            60%, 75% {
+                transform: translateX(-60%);
+            }
+
+            80%, 95% {
+                transform: translateX(-80%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Slider Dots */
+        .dots {
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            right: 0;
+
+            display: flex;
+            justify-content: center;
+            gap: 7px;
+
+            z-index: 5;
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.55);
+
+            box-shadow: 0 0 5px rgba(255,255,255,0.8);
+        }
+
+        /* Login Box */
+        .login-box {
+            width: 100%;
+            max-width: 750px;
+
+            margin: 30px auto 0;
+
+            padding: 10px;
+
+            display: flex;
+            gap: 8px;
+
+            background: rgba(255,255,255,0.75);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border: 1px solid rgba(255,255,255,0.9);
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 12px 35px rgba(0,80,160,0.18),
+                inset 0 1px 0 white;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-box::before {
+            content: "";
+
+            position: absolute;
+            top: 0;
+            left: -120%;
+
+            width: 70%;
+            height: 100%;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.7),
+                transparent
+            );
+
+            transform: skewX(-20deg);
+
+            animation: loginShine 5s infinite;
+        }
+
+        @keyframes loginShine {
+
+            0% {
+                left: -120%;
+            }
+
+            50% {
+                left: 150%;
+            }
+
+            100% {
+                left: 150%;
+            }
+        }
+
+        .input-group {
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        .input-group input {
+            width: 100%;
+
+            height: 55px;
+
+            border: 2px solid #d7e8f8;
+
+            border-radius: 15px;
+
+            padding: 0 18px;
+
+            font-size: 16px;
+
+            outline: none;
+
+            background: rgba(255,255,255,0.9);
+
+            color: #123;
+
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #2196f3;
+
+            box-shadow:
+                0 0 0 4px rgba(33,150,243,0.12),
+                0 0 15px rgba(33,150,243,0.2);
+        }
+
+        .input-group input::placeholder {
+            color: #777;
+        }
+
+        /* PIN width */
+        .pin-group {
+            max-width: 180px;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+
+            .page {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 10px 12px;
+                border-radius: 20px;
+            }
+
+            .logo {
+                width: 52px;
+                height: 52px;
+                min-width: 52px;
+                font-size: 15px;
+            }
+
+            .brand h1 {
+                font-size: 21px;
+                letter-spacing: 1px;
+            }
+
+            .brand p {
+                font-size: 11px;
+            }
+
+            .slider-container {
+                height: 210px;
+                margin-top: 15px;
+                border-radius: 20px;
+            }
+
+            .slide-content h2 {
+                font-size: 30px;
+            }
+
+            .slide-content p {
+                font-size: 13px;
+            }
+
+            .login-box {
+                margin-top: 20px;
+                padding: 8px;
+
+                flex-direction: column;
+
+                border-radius: 18px;
+            }
+
+            .input-group input {
+                height: 52px;
+            }
+
+            .pin-group {
+                max-width: none;
+            }
+        }
+
+        @media (min-width: 601px) {
+
+            .login-box .input-group:first-child {
+                flex: 2;
+            }
+
+            .login-box .pin-group {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- Header -->
+    <header class="header">
+
+        <div class="logo">
+            SN
+        </div>
+
+        <div class="brand">
+            <h1>SN INTERNET ZONE</h1>
+            <p>Welcome to SN Internet Zone</p>
+        </div>
+
+    </header>
+
+
+    <!-- Slider -->
+    <section class="slider-container">
+
+        <div class="slider">
+
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>SLIDE 1</h2>
+                    <p>Welcome to SN Internet Zone</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>SLIDE 2</h2>
+                    <p>Fast & Reliable Internet Services</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>SLIDE 3</h2>
+                    <p>Online Form & Digital Services</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>SLIDE 4</h2>
+                    <p>Printing • Scanning • Online Work</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>SLIDE 5</h2>
+                    <p>Your Trusted Internet Zone</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Dots -->
+        <div class="dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+    </section>
+
+
+    <!-- Mobile + PIN -->
+    <div class="login-box">
+
+        <div class="input-group">
+            <input
+                type="tel"
+                id="mobile"
+                placeholder="Enter 10 Digit Mobile Number"
+                maxlength="10"
+                inputmode="numeric"
+                autocomplete="tel"
+                oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)"
+            >
+        </div>
+
+        <div class="input-group pin-group">
+            <input
+                type="password"
+                id="pin"
+                placeholder="4 Digit PIN"
+                maxlength="4"
+                inputmode="numeric"
+                autocomplete="off"
+                oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,4)"
+            >
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
